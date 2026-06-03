@@ -1140,7 +1140,7 @@
                 <!-- Replaced single image with interactive gallery -->
                 <div class="gallery-container">
                     <div class="main-image-wrapper">
-                        <img id="mainGalleryImage" src="img/box00.png" alt="Release любой ценой" class="gallery-main-image" style="object-fit: cover;">
+                        <img id="mainGalleryImage" src="img/box00.webp" alt="Release любой ценой" class="gallery-main-image" style="object-fit: cover;" width="964" height="1280">
                         <button class="gallery-nav prev" onclick="changeGalleryImage(-1)" aria-label="Предыдущее изображение">
                             <svg viewBox="0 0 24 24">
                                 <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
@@ -1240,16 +1240,28 @@
             </div>
             <div class="cards-gallery">
                 <div class="game-card">
-                    <img src="img/00.png" alt="AI Hallucination"/>
+                    <picture>
+                        <source srcset="img/00.webp" type="image/webp">
+                        <img src="img/00.png" alt="AI Hallucination" loading="lazy" width="736" height="1029">
+                    </picture>
                 </div>
                 <div class="game-card">
-                    <img src="img/01.png" alt="Error 500"/>
+                    <picture>
+                        <source srcset="img/01.webp" type="image/webp">
+                        <img src="img/01.png" alt="Error 500" loading="lazy" width="736" height="1029">
+                    </picture>
                 </div>
                 <div class="game-card">
-                    <img src="img/02.png" alt="Rubber Ducky"/>
+                    <picture>
+                        <source srcset="img/02.webp" type="image/webp">
+                        <img src="img/02.png" alt="Rubber Ducky" loading="lazy" width="736" height="1029">
+                    </picture>
                 </div>
                 <div class="game-card">
-                    <img src="img/03.png" alt="Git Cherry-pick">
+                    <picture>
+                        <source srcset="img/03.webp" type="image/webp">
+                        <img src="img/03.png" alt="Git Cherry-pick" loading="lazy" width="736" height="1029">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -1604,11 +1616,17 @@
             });
         });
 
+        const imgExt = (function() {
+            const c = document.createElement('canvas');
+            return (c.getContext && c.getContext('2d') &&
+                    c.toDataURL('image/webp').indexOf('data:image/webp') === 0) ? 'webp' : 'png';
+        })();
+
         const galleryImages = [
-            { src: 'img/box00.png', alt: 'Release любой ценой' },
-            { src: 'img/box01.png', alt: 'Release любой ценой' },
-            { src: 'img/box02.png', alt: 'Release любой ценой' },
-            { src: 'img/box03.png', alt: 'Release любой ценой' }
+            { src: `img/box00.${imgExt}`, alt: 'Release любой ценой' },
+            { src: `img/box01.${imgExt}`, alt: 'Release любой ценой' },
+            { src: `img/box02.${imgExt}`, alt: 'Release любой ценой' },
+            { src: `img/box03.${imgExt}`, alt: 'Release любой ценой' }
         ];
 
         let currentGalleryIndex = 0;
@@ -1618,7 +1636,7 @@
             galleryImages.forEach((img, index) => {
                 const thumb = document.createElement('div');
                 thumb.className = `thumb-item ${index === 0 ? 'active' : ''}`;
-                thumb.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+                thumb.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
                 thumb.onclick = () => setGalleryImage(index);
                 thumbsContainer.appendChild(thumb);
             });
