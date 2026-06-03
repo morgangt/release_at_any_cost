@@ -13,17 +13,69 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Minify HTML (inline CSS + JS)
+        run: |
+          mkdir -p dist
+          npm run build
+          cp -r img dist/img
+          cp -r download dist/download
+
+      - name: Install WebP tools
+        run: sudo apt-get install -y webp
+
+      - name: Convert PNG images to WebP
+        run: |
+          for f in dist/img/*.png; do
+            cwebp -q 85 "$f" -o "${f%.png}.webp"
+          done
+
       - name: Deploy to Yandex Object Storage
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
         run: |
-          aws s3 sync . s3://${{ secrets.YC_BUCKET_NAME }}/ \
+          aws s3 sync dist/ s3://${{ secrets.YC_BUCKET_NAME }}/ \
             --endpoint-url https://storage.yandexcloud.net \
             --region ru-central1 \
             --delete \
-            --exclude ".git/*" \
-            --exclude ".github/*" \
-            --exclude "package.json" \
-            --exclude "*.md" \
+            --acl public-read \
             --no-progress
+
+      - name: Set cache headers for static assets
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp s3://${{ secrets.YC_BUCKET_NAME }}/index.html \
+            s3://${{ secrets.YC_BUCKET_NAME }}/index.html \
+            --endpoint-url https://storage.yandexcloud.net \
+            --region ru-central1 \
+            --acl public-read \
+            --cache-control "no-cache, must-revalidate" \
+            --content-type "text/html; charset=utf-8" \
+            --metadata-directive REPLACE
+
+          for ext in png webp; do
+            for obj in $(aws s3 ls s3://${{ secrets.YC_BUCKET_NAME }}/img/ \
+              --endpoint-url https://storage.yandexcloud.net \
+              --region ru-central1 | awk '{print $4}' | grep "\.$ext$"); do
+              aws s3 cp \
+                s3://${{ secrets.YC_BUCKET_NAME }}/img/$obj \
+                s3://${{ secrets.YC_BUCKET_NAME }}/img/$obj \
+                --endpoint-url https://storage.yandexcloud.net \
+                --region ru-central1 \
+                --acl public-read \
+                --cache-control "public, max-age=31536000, immutable" \
+                --content-type "image/$ext" \
+                --metadata-directive REPLACE
+            done
+          done

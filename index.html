@@ -2,8 +2,24 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109620333', 'ym');
+
+        ym(109620333, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/109620333" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Release любой ценой — Карточная игра для разработчиков</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="img/box00.webp" type="image/webp" fetchpriority="high">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&family=Fira+Mono:wght@400;500;700&family=Fira+Code:wght@400;500;600;700&display=swap');
 
@@ -1140,7 +1156,7 @@
                 <!-- Replaced single image with interactive gallery -->
                 <div class="gallery-container">
                     <div class="main-image-wrapper">
-                        <img id="mainGalleryImage" src="img/box00.png" alt="Release любой ценой" class="gallery-main-image" style="object-fit: cover;">
+                        <img id="mainGalleryImage" src="img/box00.webp" alt="Release любой ценой" class="gallery-main-image" style="object-fit: cover;" width="964" height="1280">
                         <button class="gallery-nav prev" onclick="changeGalleryImage(-1)" aria-label="Предыдущее изображение">
                             <svg viewBox="0 0 24 24">
                                 <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
@@ -1240,16 +1256,28 @@
             </div>
             <div class="cards-gallery">
                 <div class="game-card">
-                    <img src="img/00.png" alt="AI Hallucination"/>
+                    <picture>
+                        <source srcset="img/00.webp" type="image/webp">
+                        <img src="img/00.png" alt="AI Hallucination" loading="lazy" width="736" height="1029">
+                    </picture>
                 </div>
                 <div class="game-card">
-                    <img src="img/01.png" alt="Error 500"/>
+                    <picture>
+                        <source srcset="img/01.webp" type="image/webp">
+                        <img src="img/01.png" alt="Error 500" loading="lazy" width="736" height="1029">
+                    </picture>
                 </div>
                 <div class="game-card">
-                    <img src="img/02.png" alt="Rubber Ducky"/>
+                    <picture>
+                        <source srcset="img/02.webp" type="image/webp">
+                        <img src="img/02.png" alt="Rubber Ducky" loading="lazy" width="736" height="1029">
+                    </picture>
                 </div>
                 <div class="game-card">
-                    <img src="img/03.png" alt="Git Cherry-pick">
+                    <picture>
+                        <source srcset="img/03.webp" type="image/webp">
+                        <img src="img/03.png" alt="Git Cherry-pick" loading="lazy" width="736" height="1029">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -1604,11 +1632,17 @@
             });
         });
 
+        const imgExt = (function() {
+            const c = document.createElement('canvas');
+            return (c.getContext && c.getContext('2d') &&
+                    c.toDataURL('image/webp').indexOf('data:image/webp') === 0) ? 'webp' : 'png';
+        })();
+
         const galleryImages = [
-            { src: 'img/box00.png', alt: 'Release любой ценой' },
-            { src: 'img/box01.png', alt: 'Release любой ценой' },
-            { src: 'img/box02.png', alt: 'Release любой ценой' },
-            { src: 'img/box03.png', alt: 'Release любой ценой' }
+            { src: `img/box00.${imgExt}`, alt: 'Release любой ценой' },
+            { src: `img/box01.${imgExt}`, alt: 'Release любой ценой' },
+            { src: `img/box02.${imgExt}`, alt: 'Release любой ценой' },
+            { src: `img/box03.${imgExt}`, alt: 'Release любой ценой' }
         ];
 
         let currentGalleryIndex = 0;
@@ -1618,7 +1652,7 @@
             galleryImages.forEach((img, index) => {
                 const thumb = document.createElement('div');
                 thumb.className = `thumb-item ${index === 0 ? 'active' : ''}`;
-                thumb.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+                thumb.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
                 thumb.onclick = () => setGalleryImage(index);
                 thumbsContainer.appendChild(thumb);
             });
@@ -1646,6 +1680,12 @@
         window.addEventListener('load', () => {
             initGallery();
         });
+    </script>
+    <script>
+        (function(w,d,u){
+            var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+            var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn-ru.bitrix24.ru/b38118922/crm/site_button/loader_3_epdtt6.js');
     </script>
 </body>
 </html>
