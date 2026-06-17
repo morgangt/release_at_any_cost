@@ -28,6 +28,9 @@ jobs:
           npm run build
           cp -r img dist/img
           cp -r download dist/download
+          cp robots.txt dist/robots.txt
+          cp sitemap.xml dist/sitemap.xml
+          cp privacy.html dist/privacy.html
 
       - name: Install WebP tools
         run: sudo apt-get install -y webp
