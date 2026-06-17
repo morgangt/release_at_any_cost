@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика обработки персональных данных</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #000000;
+            --color-primary: #00ff88;
+            --color-text: #ffffff;
+            --color-text-dim: #b0b0b0;
+            --font-mono: 'Fira Code', 'Fira Mono', monospace;
+            --font-display: 'Onest', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: clamp(24px, 5vw, 80px);
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            padding: clamp(60px, 10vh, 100px) 0 clamp(40px, 6vh, 60px) 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: clamp(40px, 6vh, 80px);
+        }
+
+        h1 {
+            font-size: clamp(36px, 8vw, 56px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            font-family: var(--font-display);
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--color-text-dim);
+        }
+
+        .breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.8;
+        }
+
+        .content {
+            line-height: 1.8;
+        }
+
+        h2 {
+            font-size: clamp(24px, 5vw, 32px);
+            font-weight: 600;
+            margin-top: clamp(40px, 6vh, 60px);
+            margin-bottom: 20px;
+            color: var(--color-primary);
+            font-family: var(--font-display);
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: var(--color-text);
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--color-text-dim);
+            text-align: justify;
+        }
+
+        ol, ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+            color: var(--color-text-dim);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--color-primary);
+        }
+
+        footer {
+            margin-top: clamp(100px, 15vh, 150px);
+            padding-top: clamp(40px, 6vh, 60px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--color-text-dim);
+            font-size: 14px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            padding: 12px 24px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 4px;
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="breadcrumb">
+                <a href="/">← На главную</a>
+            </div>
+            <h1>Политика обработки персональных данных</h1>
+        </header>
+
+        <div class="content">
+            <h2>1. Общие положения</h2>
+            <p>
+                Настоящая Политика обработки персональных данных (далее — «Политика») определяет порядок сбора,
+                использования, хранения и защиты персональных данных пользователей веб-сайта <strong>releaseanycost.com</strong>
+                (далее — «Сайт»).
+            </p>
+            <p>
+                Используя Сайт, вы согласны с условиями данной Политики и даете согласие на обработку ваших персональных данных
+                в соответствии с действующим законодательством Российской Федерации.
+            </p>
+
+            <h2>2. Персональные данные, подлежащие обработке</h2>
+            <p>При посещении Сайта мы можем собирать следующие данные:</p>
+            <ul>
+                <li><strong>IP-адрес</strong> — автоматически получается при подключении к Сайту</li>
+                <li><strong>Cookies и технологии отслеживания</strong> — используются для аналитики и оптимизации</li>
+                <li><strong>Данные об использовании Сайта</strong> — какие страницы вы посещали, время проведенное на Сайте, ссылки, по которым вы перешли</li>
+                <li><strong>Информация из браузера</strong> — операционная система, тип браузера, разрешение экрана</li>
+            </ul>
+
+            <h2>3. Цели обработки персональных данных</h2>
+            <p>Персональные данные обрабатываются в следующих целях:</p>
+            <ul>
+                <li>Анализ статистики посещений и поведения пользователей на Сайте</li>
+                <li>Улучшение качества и удобства использования Сайта</li>
+                <li>Выявление ошибок и проблем функционирования Сайта</li>
+                <li>Соответствие требованиям законодательства</li>
+            </ul>
+
+            <h2>4. Яндекс Метрика</h2>
+            <p>
+                Сайт использует сервис анализа статистики <strong>Яндекс Метрика</strong>, предоставляемый компанией Яндекс.
+                Яндекс Метрика собирает и обрабатывает следующие данные:
+            </p>
+            <ul>
+                <li>IP-адреса посетителей</li>
+                <li>Информация о cookies</li>
+                <li>Данные о действиях пользователей на Сайте</li>
+                <li>Технические характеристики устройства</li>
+            </ul>
+            <p>
+                Обработка данных Яндекс Метрикой осуществляется в соответствии с
+                <a href="https://yandex.ru/legal/metrica_termsofuse/" style="color: var(--color-primary);" target="_blank">условиями использования Яндекс Метрики</a>.
+                Яндекс обрабатывает данные на основе собственной политики конфиденциальности.
+            </p>
+
+            <h2>5. Правовое основание обработки</h2>
+            <p>
+                Обработка персональных данных осуществляется на основании:
+            </p>
+            <ul>
+                <li>Вашего добровольного согласия на использование Сайта и принятие условий данной Политики</li>
+                <li>Необходимости для предоставления услуг Сайта</li>
+                <li>Соответствия требованиям законодательства Российской Федерации</li>
+            </ul>
+
+            <h2>6. Сроки хранения данных</h2>
+            <p>
+                Персональные данные хранятся в течение периода, необходимого для достижения целей обработки.
+                Как правило, данные аналитики хранятся у Яндекс Метрики в соответствии с их политикой,
+                но не более чем необходимо для целей анализа.
+            </p>
+
+            <h2>7. Отказ от cookies</h2>
+            <p>
+                Вы можете отключить cookies в настройках браузера. Однако это может повлиять на удобство использования Сайта
+                и функциональность некоторых его элементов.
+            </p>
+            <p>
+                Вы также можете отказаться от сбора данных Яндекс Метрикой, установив
+                <a href="https://yandex.ru/support/metrica/general/opt-out.html" style="color: var(--color-primary);" target="_blank">расширение для отказа от Яндекс Метрики</a>.
+            </p>
+
+            <h2>8. Безопасность данных</h2>
+            <p>
+                Мы принимаем необходимые технические и организационные меры для защиты персональных данных от несанкционированного
+                доступа, изменения, распространения и уничтожения.
+            </p>
+
+            <h2>9. Ваши права</h2>
+            <p>Вы имеете право:</p>
+            <ul>
+                <li>Получить информацию о том, какие данные мы обрабатываем</li>
+                <li>Потребовать исправление или удаление своих персональных данных</li>
+                <li>Отозвать свое согласие на обработку данных в любой момент</li>
+                <li>Подать жалобу в надзорный орган (Роскомнадзор)</li>
+            </ul>
+
+            <h2>10. Контактная информация</h2>
+            <p>
+                Если у вас есть вопросы относительно данной Политики или обработки ваших персональных данных,
+                пожалуйста, свяжитесь с нами. Контактная информация доступна на главной странице Сайта.
+            </p>
+
+            <h2>11. Изменения в Политике</h2>
+            <p>
+                Мы оставляем за собой право изменять данную Политику в любое время.
+                Существенные изменения будут опубликованы на Сайте.
+                Дальнейшее использование Сайта означает ваше согласие с измененной Политикой.
+            </p>
+
+            <h2>12. Применимое право</h2>
+            <p>
+                Данная Политика подчиняется законодательству Российской Федерации
+                и интерпретируется в соответствии с ним.
+            </p>
+        </div>
+
+        <footer>
+            <p>Последнее обновление: 17 июня 2026 года</p>
+            <p>© Release любой ценой. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
